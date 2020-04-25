@@ -1,6 +1,6 @@
 // i = baris, j= colom
 function Element(color) {
-    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 50px; width: 50px`)
+    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`)
 }
 
 var mainBody = document.getElementById("main");
