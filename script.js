@@ -1,18 +1,34 @@
 // i = baris, j= colom
+function Element(color) {
+    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`)
+}
+
 var mainBody = document.getElementById("main");
-for(i=0; i<22; i++){
-    for(j=0; j<22; j++){
+for (i = 0; i < 21; i++) {
+    for (j = 0; j < 21; j++) {
         var mainBodyDiv = document.createElement("div");
-        let content = document.createTextNode(`c-${j+1}-b-${i+1}`)
         mainBodyDiv.setAttribute("class", `c-${j}-b-${i}`);
-        if (i===0 || i === 21 || j === 0 || j === 21){
-        mainBodyDiv.setAttribute("style", "border: 1px solid; background-color: black; height:50px; weight:50px;")
-        mainBodyDiv.appendChild(content)
-        mainBody.appendChild(mainBodyDiv);
-    }else {
-        mainBodyDiv.setAttribute("style", "border: 1px solid; background-color: grey; height:50px; weight:50px;")
-        mainBodyDiv.appendChild(content)
+        if (i === 0 || i === 20 || j === 0 || j === 20) {
+            Element("black")
+        } else if (i % 2 === 0) {
+            if (j % 2 === 0) {
+                Element("black")
+            } else {
+                var warna = ["black", "grey", "grey", "grey"]
+                random_element = warna[Math.floor(Math.random() * warna.length)]
+                Element(random_element)
+            }
+        } else if (j % 2 === 0) {
+            if (i % 2 === 0) {
+                Element("grey")
+            } else {
+                var warna = ["black", "grey", "grey", "grey"]
+                random_element = warna[Math.floor(Math.random() * warna.length)]
+                Element(random_element)
+            }
+        } else {
+            Element("grey")
+        }
         mainBody.appendChild(mainBodyDiv);
     }
-}
 }
