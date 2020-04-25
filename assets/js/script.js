@@ -38,23 +38,23 @@ for (i = 0; i < 21; i++) {
     }
 }
 
-function Hero(jum_hero) {
-    for (no_hero = 0; no_hero < jum_hero; no_hero++) {
-        if (no_hero == 0) {
+// function Hero(jum_hero) {
+//     for (no_hero = 0; no_hero < jum_hero; no_hero++) {
+//         if (no_hero == 0) {
             var xPos = 1;
             var yPos = 1;
-        } else if (no_hero == 1) {
-            var xPos = 21 - 1;
-            var yPos = 21 - 1;
-        }
+        // } else if (no_hero == 1) {
+        //     var xPos = 21 - 1;
+        //     var yPos = 21 - 1;
+        // }
         var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
         var span = document.createElement("span");
         let content = document.createTextNode("🚶");
         span.setAttribute('id', 'player')
         span.appendChild(content);
         heroPos.appendChild(span);
-    }
-}
+//     }
+// }
 
 function Move(xmove, ymove) {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
