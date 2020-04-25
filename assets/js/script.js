@@ -1,6 +1,11 @@
 // i = baris, j= colom
 function Element(color) {
-    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`)
+    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`);
+    if (color === "black") {
+        mainBodyDiv.setAttribute("class", "wall");
+    } else if (color === "grey") {
+        mainBodyDiv.setAttribute("class", "street");
+    }
 }
 
 var mainBody = document.getElementById("main");
@@ -42,7 +47,7 @@ let content1 = document.createTextNode("🚶");
 span1.appendChild(content1);
 heroPos.appendChild(span1);
 
-function down(){
+function down() {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
     heroPos.removeChild(heroPos.childNodes[0]);
     yPos += 1;
@@ -53,7 +58,7 @@ function down(){
     heroPos.appendChild(span1);
 }
 
-function up(){
+function up() {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
     heroPos.removeChild(heroPos.childNodes[0]);
     yPos -= 1;
@@ -64,7 +69,7 @@ function up(){
     heroPos.appendChild(span1);
 }
 
-function right(){
+function right() {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
     heroPos.removeChild(heroPos.childNodes[0]);
     xPos += 1;
@@ -75,7 +80,7 @@ function right(){
     heroPos.appendChild(span1);
 }
 
-function left(){
+function left() {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
     heroPos.removeChild(heroPos.childNodes[0]);
     xPos -= 1;
