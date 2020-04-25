@@ -13,7 +13,7 @@ for (i = 0; i < 21; i++) {
     for (j = 0; j < 21; j++) {
         var mainBodyDiv = document.createElement("div");
         mainBodyDiv.setAttribute("id", `c-${j}-b-${i}`);
-        if (i === 0 || i === 20 || j === 0 || j === 20) {
+        if (i === 0 || i === 21 - 1 || j === 0 || j === 21 - 1) {
             Element("black")
         } else if (i % 2 === 0) {
             if (j % 2 === 0) {
@@ -38,40 +38,32 @@ for (i = 0; i < 21; i++) {
     }
 }
 
-
-var xPos = 1;
-var yPos = 1;
-var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-var span1 = document.createElement("span");
-let content1 = document.createTextNode("🚶");
-span1.setAttribute('id', 'player')
-span1.appendChild(content1);
-heroPos.appendChild(span1);
-
-// function Move() {
-
-//     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-//     yPos += 1;
-//     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-//     let isWall = heroPos.className
-
-//     if (isWall != 'wall') {
-
-//         // heroPos1.removeChild(heroPos1.childNodes[0]);
-//         // var span1 = document.createElement("span");
-//         // let content1 = document.createTextNode("🚶");
-//         orgPlayer = document.getElementById('player')
-//             // span1.appendChild(content1);
-//     }
-//     heroPos.appendChild(orgPlayer);
-
-
-// }
+function Hero(jum_hero) {
+    for (no_hero = 0; no_hero < jum_hero; no_hero++) {
+        if (no_hero == 0) {
+            var xPos = 1;
+            var yPos = 1;
+        } else if (no_hero == 1) {
+            var xPos = 21 - 1;
+            var yPos = 21 - 1;
+        }
+        var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
+        var span = document.createElement("span");
+        let content = document.createTextNode("🚶");
+        span.setAttribute('id', 'player')
+        span.appendChild(content);
+        heroPos.appendChild(span);
+    }
+}
 
 function Move(xmove, ymove) {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    let isWall = heroPos.className
-    if (xmove === 0) {
+    var area = document.getElementById(`c-${xPos+xmove}-b-${yPos+ymove}`);
+    let isWall = area.className
+    if (isWall == 'wall') {
+        xPos += 0;
+        yPos += 0;
+    } else if (xmove === 0) {
         yPos += ymove;
     } else if (ymove === 0) {
         xPos += xmove;
@@ -81,12 +73,7 @@ function Move(xmove, ymove) {
     heroPos.appendChild(orgPlayer);
 }
 
-
-// controlButton = document.body
-// let key = ''
-
-var controlButton = document.body.addEventListener('keydown', (event) => {
-    // console.log(`key=${event.key},code=${event.code}`);
+var controlButton = document.body.addEventListener('keyup', (event) => {
     if (event.code == 'ArrowDown') {
         Move(0, 1)
     } else if (event.code == 'ArrowUp') {
@@ -97,5 +84,3 @@ var controlButton = document.body.addEventListener('keydown', (event) => {
         Move(1, 0)
     }
 });
-
-// console.log(key)
