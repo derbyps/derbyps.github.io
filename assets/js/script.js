@@ -44,49 +44,58 @@ var yPos = 1;
 var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
 var span1 = document.createElement("span");
 let content1 = document.createTextNode("🚶");
+span1.setAttribute('id', 'player')
 span1.appendChild(content1);
 heroPos.appendChild(span1);
 
-function down() {
+// function Move() {
+
+//     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
+//     yPos += 1;
+//     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
+//     let isWall = heroPos.className
+
+//     if (isWall != 'wall') {
+
+//         // heroPos1.removeChild(heroPos1.childNodes[0]);
+//         // var span1 = document.createElement("span");
+//         // let content1 = document.createTextNode("🚶");
+//         orgPlayer = document.getElementById('player')
+//             // span1.appendChild(content1);
+//     }
+//     heroPos.appendChild(orgPlayer);
+
+
+// }
+
+function Move(xmove, ymove) {
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    heroPos.removeChild(heroPos.childNodes[0]);
-    yPos += 1;
+    let isWall = heroPos.className
+    if (xmove === 0) {
+        yPos += ymove;
+    } else if (ymove === 0) {
+        xPos += xmove;
+    }
     var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    var span1 = document.createElement("span");
-    let content1 = document.createTextNode("🚶");
-    span1.appendChild(content1);
-    heroPos.appendChild(span1);
+    orgPlayer = document.getElementById('player')
+    heroPos.appendChild(orgPlayer);
 }
 
-function up() {
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    heroPos.removeChild(heroPos.childNodes[0]);
-    yPos -= 1;
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    var span1 = document.createElement("span");
-    let content1 = document.createTextNode("🚶");
-    span1.appendChild(content1);
-    heroPos.appendChild(span1);
-}
 
-function right() {
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    heroPos.removeChild(heroPos.childNodes[0]);
-    xPos += 1;
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    var span1 = document.createElement("span");
-    let content1 = document.createTextNode("🚶");
-    span1.appendChild(content1);
-    heroPos.appendChild(span1);
-}
+// controlButton = document.body
+// let key = ''
 
-function left() {
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    heroPos.removeChild(heroPos.childNodes[0]);
-    xPos -= 1;
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    var span1 = document.createElement("span");
-    let content1 = document.createTextNode("🚶");
-    span1.appendChild(content1);
-    heroPos.appendChild(span1);
-}
+var controlButton = document.body.addEventListener('keydown', (event) => {
+    // console.log(`key=${event.key},code=${event.code}`);
+    if (event.code == 'ArrowDown') {
+        Move(0, 1)
+    } else if (event.code == 'ArrowUp') {
+        Move(0, -1)
+    } else if (event.code == 'ArrowLeft') {
+        Move(-1, 0)
+    } else if (event.code == 'ArrowRight') {
+        Move(1, 0)
+    }
+});
+
+// console.log(key)
