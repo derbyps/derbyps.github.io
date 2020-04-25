@@ -38,49 +38,81 @@ for (i = 0; i < 21; i++) {
     }
 }
 
-// function Hero(jum_hero) {
-//     for (no_hero = 0; no_hero < jum_hero; no_hero++) {
-//         if (no_hero == 0) {
-            var xPos = 1;
-            var yPos = 1;
-        // } else if (no_hero == 1) {
-        //     var xPos = 21 - 1;
-        //     var yPos = 21 - 1;
-        // }
-        var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-        var span = document.createElement("span");
-        let content = document.createTextNode("🚶");
-        span.setAttribute('id', 'player')
-        span.appendChild(content);
-        heroPos.appendChild(span);
-//     }
-// }
 
-function Move(xmove, ymove) {
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    var area = document.getElementById(`c-${xPos+xmove}-b-${yPos+ymove}`);
+var xPos1 = 1;
+var yPos1 = 1;
+var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
+var span1 = document.createElement("span1");
+let content1 = document.createTextNode("🚶");
+span1.setAttribute('id', 'player1')
+span1.appendChild(content1);
+heroPos1.appendChild(span1);
+
+
+function Move1(xMove1, yMove1) {
+    var heroPos = document.getElementById(`c-${xPos1}-b-${yPos1}`);
+    var area = document.getElementById(`c-${xPos1+xMove1}-b-${yPos1+yMove1}`);
     let isWall = area.className
     if (isWall == 'wall') {
-        xPos += 0;
-        yPos += 0;
-    } else if (xmove === 0) {
-        yPos += ymove;
-    } else if (ymove === 0) {
-        xPos += xmove;
+        xPos1 += 0;
+        yPos1 += 0;
+    } else if (xMove1 === 0) {
+        yPos1 += yMove1;
+    } else if (yMove1 === 0) {
+        xPos1 += xMove1;
     }
-    var heroPos = document.getElementById(`c-${xPos}-b-${yPos}`);
-    orgPlayer = document.getElementById('player')
-    heroPos.appendChild(orgPlayer);
+    var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
+    orgPlayer1 = document.getElementById('player1')
+    heroPos1.appendChild(orgPlayer1);
 }
 
 var controlButton = document.body.addEventListener('keyup', (event) => {
     if (event.code == 'ArrowDown') {
-        Move(0, 1)
+        Move1(0, 1)
     } else if (event.code == 'ArrowUp') {
-        Move(0, -1)
+        Move1(0, -1)
     } else if (event.code == 'ArrowLeft') {
-        Move(-1, 0)
+        Move1(-1, 0)
     } else if (event.code == 'ArrowRight') {
-        Move(1, 0)
+        Move1(1, 0)
+    }
+});
+
+var xPos2 = 19;
+var yPos2 = 19;
+var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
+var span2 = document.createElement("span2");
+let content2 = document.createTextNode("🚶");
+span2.setAttribute('id', 'player2')
+span2.appendChild(content2);
+heroPos2.appendChild(span2);
+
+
+function Move2(xMove2, yMove2) {
+    var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
+    var area = document.getElementById(`c-${xPos2+xMove2}-b-${yPos2+yMove2}`);
+    let isWall = area.className
+    if (isWall == 'wall') {
+        xPos2 += 0;
+        yPos2 += 0;
+    } else if (xMove2 === 0) {
+        yPos2 += yMove2;
+    } else if (yMove2 === 0) {
+        xPos2 += xMove2;
+    }
+    var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
+    orgPlayer2 = document.getElementById('player2')
+    heroPos2.appendChild(orgPlayer2);
+}
+
+var controlButton = document.body.addEventListener('keyup', (event) => {
+    if (event.code == 'KeyS') {
+        Move2(0, 1)
+    } else if (event.code == 'KeyW') {
+        Move2(0, -1)
+    } else if (event.code == 'KeyA') {
+        Move2(-1, 0)
+    } else if (event.code == 'KeyD') {
+        Move2(1, 0)
     }
 });
