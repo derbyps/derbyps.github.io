@@ -1,12 +1,4 @@
 // i = baris, j= colom
-function Element(color) {
-    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`);
-    if (color === "black") {
-        mainBodyDiv.setAttribute("class", "wall");
-    } else if (color === "grey") {
-        mainBodyDiv.setAttribute("class", "street");
-    }
-}
 
 var mainBody = document.getElementById("main");
 for (i = 0; i < 21; i++) {
@@ -38,6 +30,15 @@ for (i = 0; i < 21; i++) {
     }
 }
 
+function Element(color) {
+    mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`);
+    if (color === "black") {
+        mainBodyDiv.setAttribute("class", "wall");
+    } else if (color === "grey") {
+        mainBodyDiv.setAttribute("class", "street");
+    }
+}
+
 
 var xPos1 = 1;
 var yPos1 = 1;
@@ -50,7 +51,7 @@ heroPos1.appendChild(span1);
 
 
 function Move1(xMove1, yMove1) {
-    var heroPos = document.getElementById(`c-${xPos1}-b-${yPos1}`);
+    var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
     var area = document.getElementById(`c-${xPos1+xMove1}-b-${yPos1+yMove1}`);
     let isWall = area.className
     if (isWall == 'wall') {
@@ -64,6 +65,11 @@ function Move1(xMove1, yMove1) {
     var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
     orgPlayer1 = document.getElementById('player1')
     heroPos1.appendChild(orgPlayer1);
+    var check = document.getElementById('player1').parentNode;
+    var check1 = check.children;
+    if (check1.length == 2) {
+        alert('Maling Menyerahkan diri')
+    }
 }
 
 var controlButton = document.body.addEventListener('keyup', (event) => {
@@ -103,10 +109,9 @@ function Move2(xMove2, yMove2) {
     var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
     orgPlayer2 = document.getElementById('player2')
     heroPos2.appendChild(orgPlayer2);
-    heroPos2.appendChild(orgPlayer2);
     var check = document.getElementById('player2').parentNode;
     var check2 = check.children;
-    if(check2.length == 2){
+    if (check2.length == 2) {
         alert('Maling tertangkap')
     }
 }
@@ -122,3 +127,34 @@ var controlButton = document.body.addEventListener('keyup', (event) => {
         Move2(1, 0)
     }
 });
+
+
+var bodyTimer = document.body
+var divTimer = document.createElement("div");
+divTimer.setAttribute("id", "timer");
+bodyTimer.appendChild(divTimer);
+
+
+function Timer(min, sec) {
+    window.onload = function() {
+        var minutes = min;
+        var second = sec;
+        var myInterval = setInterval(function() {
+            document.getElementById("timer").innerHTML = minutes + " : " + second;
+            second--;
+            if (second == -1) {
+                minutes--;
+                second = 60;
+                if (minutes == -1) {
+                    clearInterval(myInterval);
+                    alert("Maling Menang")
+                }
+            } else if (second == 10) {
+                var warna = ["black", "grey", "grey", "grey"]
+                random_element = warna[Math.floor(Math.random() * warna.length)]
+                Element(random_element)
+            }
+        }, 200);
+    }
+}
+Timer(2, 20)
