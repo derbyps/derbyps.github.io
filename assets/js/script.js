@@ -1,34 +1,84 @@
 // i = baris, j= colom
-
-var mainBody = document.getElementById("main");
-for (i = 0; i < 21; i++) {
-    for (j = 0; j < 21; j++) {
-        var mainBodyDiv = document.createElement("div");
-        mainBodyDiv.setAttribute("id", `c-${j}-b-${i}`);
-        if (i === 0 || i === 21 - 1 || j === 0 || j === 21 - 1) {
-            Element("black")
-        } else if (i % 2 === 0) {
-            if (j % 2 === 0) {
-                Element("black")
-            } else {
-                var warna = ["black", "grey", "grey", "grey"]
-                random_element = warna[Math.floor(Math.random() * warna.length)]
-                Element(random_element)
+function Timer(min, sec, speedTime) {
+    window.onload = function() {
+        var minutes = min;
+        var second = sec;
+        var myInterval = setInterval(function() {
+            document.getElementById("timer").innerHTML = minutes + " : " + second;
+            second--;
+            if (second == -1) {
+                minutes--;
+                second = 60;
+                if (minutes == -1) {
+                    clearInterval(myInterval);
+                    alert("Maling Menang")
+                }
+            } else if (second == 50) {
+                for (num = 0; num < listRandomI.length; num++) {
+                    var j = listRandomJ[num]
+                    var i = listRandomI[num]
+                    var warna = ["black", "grey", "grey"]
+                    random_warna = warna[Math.floor(Math.random() * warna.length)]
+                    var change = document.getElementById(`c-${j}-b-${i}`);
+                    change.style["background-color"] = random_warna;
+                    if (random_warna === "black") {
+                        change.className = "wall";
+                    } else if (random_warna === "grey") {
+                        change.className = "street";
+                    }
+                }
             }
-        } else if (j % 2 === 0) {
-            if (i % 2 === 0) {
-                Element("grey")
-            } else {
-                var warna = ["black", "grey", "grey", "grey"]
-                random_element = warna[Math.floor(Math.random() * warna.length)]
-                Element(random_element)
-            }
-        } else {
-            Element("grey")
-        }
-        mainBody.appendChild(mainBodyDiv);
+        }, speedTime);
     }
 }
+Timer(10, 60, 200)
+
+
+listRandomI = []
+listRandomJ = []
+
+function GenerateBoard(baris, colom) {
+    var mainBody = document.getElementById("main");
+    for (i = 0; i < baris; i++) {
+        for (j = 0; j < colom; j++) {
+            mainBodyDiv = document.createElement("div");
+            mainBodyDiv.setAttribute("id", `c-${j}-b-${i}`);
+            if (i === 0 || i === baris - 1 || j === 0 || j === colom - 1) {
+                Element("black")
+            } else if (i % 2 === 0) {
+                if (j % 2 === 0) {
+                    Element("black")
+                } else {
+                    listRandomI.push(i)
+                    listRandomJ.push(j)
+                    var warna = ["black", "grey", "grey", "grey"]
+                    RandomBoard(warna)
+                }
+            } else if (j % 2 === 0) {
+                if (i % 2 === 0) {
+                    Element("grey")
+                } else {
+                    listRandomI.push(i)
+                    listRandomJ.push(j)
+                    var warna = ["black", "grey", "grey", "grey"]
+                    RandomBoard(warna)
+                }
+            } else {
+                Element("grey")
+            }
+            mainBody.appendChild(mainBodyDiv);
+        }
+    }
+
+}
+GenerateBoard(21, 21)
+
+
+function RandomBoard(warna) {
+    var random_element = warna[Math.floor(Math.random() * warna.length)]
+    Element(random_element)
+}
+
 
 function Element(color) {
     mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`);
@@ -135,21 +185,19 @@ var button = document.createElement('button');
 var buttonText = document.createTextNode('Play!');
 button.appendChild(buttonText);
 button.setAttribute("class", "play");
-button.addEventListener('click', function(){
+button.addEventListener('click', function() {
     var divTimer = document.createElement("div");
     divTimer.setAttribute("id", "timer");
     bodyTimer.appendChild(divTimer);
 })
 bodyTimer.appendChild(button);
 
-Timer(2, 20)
-
 let rulesButton = document.createElement('button');
 let rulesButtonText = document.createTextNode('Rules');
 rulesButton.appendChild(rulesButtonText);
 rulesButton.setAttribute("id", "myBtn");
 // rulesButton.addEventListener('click', function(){
-    // alert("Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis")
+// alert("Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis")
 // })
 bodyTimer.appendChild(rulesButton)
 let rulesDiv = document.createElement('div');
@@ -168,7 +216,7 @@ let spanText = document.createElement('p');
 spanContent.setAttribute("class", "close");
 spanContent.innerHTML = "&times;"
 spanText.innerHTML = "Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;&nbsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;&nbsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;&nbsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis"
-spanRules[0].appendChild(spanContent);  
+spanRules[0].appendChild(spanContent);
 spanRules[0].appendChild(spanText);
 
 var modal = document.getElementById("myModal");
@@ -181,48 +229,17 @@ var span = document.getElementsByClassName("close")[0];
 
 // When the user clicks the button, open the modal 
 btn.onclick = function() {
-  modal.style.display = "block";
+    modal.style.display = "block";
 }
 
 // When the user clicks on <span> (x), close the modal
 span.onclick = function() {
-  modal.style.display = "none";
+    modal.style.display = "none";
 }
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
-
-// let description = document.createElement('div');
-// description.setAttribute("class", "desc");
-// bodyTimer.appendChild(description)
-
-// let descriptionText = document.getElementsByClassName("desc");
-// descriptionText[0].innerHTML = "Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis"
-
-function Timer(min, sec) {
-    window.onload = function() {
-        var minutes = min;
-        var second = sec;
-        var myInterval = setInterval(function() {
-            document.getElementById("timer").innerHTML = minutes + " : " + second;
-            second--;
-            if (second == -1) {
-                minutes--;
-                second = 60;
-                if (minutes == -1) {
-                    clearInterval(myInterval);
-                    alert("Maling Menang")
-                }
-            } else if (second == 10) {
-                var warna = ["black", "grey", "grey", "grey"]
-                random_element = warna[Math.floor(Math.random() * warna.length)]
-                Element(random_element)
-            }
-        }, 200);
+    if (event.target == modal) {
+        modal.style.display = "none";
     }
 }
-// Timer(2, 20)
