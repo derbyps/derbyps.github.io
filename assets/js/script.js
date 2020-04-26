@@ -130,9 +130,19 @@ var controlButton = document.body.addEventListener('keyup', (event) => {
 
 
 var bodyTimer = document.body
-var divTimer = document.createElement("div");
-divTimer.setAttribute("id", "timer");
-bodyTimer.appendChild(divTimer);
+
+var button = document.createElement('button');
+var buttonText = document.createTextNode('Play!');
+button.appendChild(buttonText);
+button.setAttribute("class", "play");
+button.addEventListener('click', function(){
+    var divTimer = document.createElement("div");
+    divTimer.setAttribute("id", "timer");
+    bodyTimer.appendChild(divTimer);
+})
+bodyTimer.appendChild(button);
+
+Timer(2, 20)
 
 
 function Timer(min, sec) {
@@ -157,4 +167,4 @@ function Timer(min, sec) {
         }, 200);
     }
 }
-Timer(2, 20)
+// Timer(2, 20)
