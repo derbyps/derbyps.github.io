@@ -43,7 +43,7 @@ var xPos1 = 1;
 var yPos1 = 1;
 var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
 var span1 = document.createElement("span1");
-let content1 = document.createTextNode("🚶");
+let content1 = document.createTextNode("🧟‍♂️");
 span1.setAttribute('id', 'player1')
 span1.appendChild(content1);
 heroPos1.appendChild(span1);
@@ -82,7 +82,7 @@ var xPos2 = 19;
 var yPos2 = 19;
 var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
 var span2 = document.createElement("span2");
-let content2 = document.createTextNode("🚶");
+let content2 = document.createTextNode("👦");
 span2.setAttribute('id', 'player2')
 span2.appendChild(content2);
 heroPos2.appendChild(span2);
@@ -103,6 +103,12 @@ function Move2(xMove2, yMove2) {
     var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
     orgPlayer2 = document.getElementById('player2')
     heroPos2.appendChild(orgPlayer2);
+    heroPos2.appendChild(orgPlayer2);
+    var check = document.getElementById('player2').parentNode;
+    var check2 = check.children;
+    if(check2.length == 2){
+        alert('Maling tertangkap')
+    }
 }
 
 var controlButton = document.body.addEventListener('keyup', (event) => {

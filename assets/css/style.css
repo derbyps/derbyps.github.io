@@ -3,6 +3,10 @@
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
-span {
+span1 {
+    font-size: 33px;
+}
+
+span2 {
     font-size: 23px;
 }
