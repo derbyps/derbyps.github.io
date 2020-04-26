@@ -10,3 +10,11 @@ span1 {
 span2 {
     font-size: 23px;
 }
+
+#timer {
+    display: inline grid;
+    font-size: 20px;
+    margin-left: 30px;
+    color: blue;
+    font-weight: bolder;
+}
