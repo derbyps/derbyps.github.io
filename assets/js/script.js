@@ -144,6 +144,12 @@ bodyTimer.appendChild(button);
 
 Timer(2, 20)
 
+let description = document.createElement('div');
+description.setAttribute("class", "desc");
+bodyTimer.appendChild(description)
+
+let descriptionText = document.getElementsByClassName("desc");
+descriptionText[0].innerHTML = "Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis"
 
 function Timer(min, sec) {
     window.onload = function() {
