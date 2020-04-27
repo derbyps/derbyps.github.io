@@ -239,3 +239,21 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
+
+// let bodyAudio = document.body;
+// let audioDiv = document.createElement('audio');
+// audioDiv.setAttribute("id", "myAudio");
+// bodyAudio.appendChild(audioDiv)
+
+// let sourceAudio = document.getElementById("myAudio")
+// let sourceDiv = document.createElement("source")
+// sourceDiv.setAttribute("src", "assets/sound/pacman.mp3")
+// sourceDiv.setAttribute("type", "audio/mpeg")
+// sourceAudio.appendChild(sourceDiv)
+
+// let playAudio = document.getElementById("myAudio");
+// playAudio.onplay();
+
+window.onload = function(){
+    this.document.getElementById("background").play();
+}
