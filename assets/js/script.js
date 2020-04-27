@@ -1,4 +1,4 @@
-function Timer(min, sec, speedTime) {
+function Timer(min, sec, speedTime, stop) {
     window.onload = function() {
         var minutes = min;
         var second = sec;
@@ -10,15 +10,17 @@ function Timer(min, sec, speedTime) {
                 second = 60;
                 if (minutes == -1) {
                     clearInterval(myInterval);
-                    let press = confirm('Maling Menyerahkan diri');
-                    if (press == true){
+                    Audio("malingwin")
+                    let press = confirm('Maling Menang');
+                    if (press == true) {
                         location.reload();
-                    }else{
+                    } else {
                         location.reload();
                     }
                 }
             } else if (second == 0 || second == 30) {
                 for (num = 0; num < listRandomI.length; num++) {
+                    Audio("wall")
                     var j = listRandomJ[num]
                     var i = listRandomI[num]
                     var warna = ["black", "grey", "grey"]
@@ -35,7 +37,7 @@ function Timer(min, sec, speedTime) {
         }, speedTime);
     }
 }
-Timer(10, 60, 250)
+Timer(1, 0, 250)
 
 
 listRandomI = []
@@ -49,6 +51,8 @@ function GenerateBoard(baris, colom) {
             mainBodyDiv = document.createElement("div");
             mainBodyDiv.setAttribute("id", `c-${j}-b-${i}`);
             if (i === 0 || i === baris - 1 || j === 0 || j === colom - 1) {
+                Element("black")
+            } else if (i === 1 && j === 10 || i === 10 && j === 1 || i === 10 && j === colom - 2 || i === baris - 2 && j === 10) {
                 Element("black")
             } else if (i === 1 || i === baris - 2 || j === 1 || j === colom - 2) {
                 Element("grey")
@@ -79,12 +83,13 @@ function GenerateBoard(baris, colom) {
 }
 GenerateBoard(21, 21)
 
+// board random
 function RandomBoard(warna) {
     var random_element = warna[Math.floor(Math.random() * warna.length)]
     Element(random_element)
 }
 
-
+// board in Generate board
 function Element(color) {
     mainBodyDiv.setAttribute("style", `border: 1 px solid; background-color: ${color}; height: 27px; width: 27px`);
     if (color === "black") {
@@ -94,7 +99,7 @@ function Element(color) {
     }
 }
 
-
+//maling
 var xPos1 = 1;
 var yPos1 = 1;
 var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
@@ -103,8 +108,16 @@ let content1 = document.createTextNode("🧟‍♂️");
 span1.setAttribute('id', 'player1')
 span1.appendChild(content1);
 heroPos1.appendChild(span1);
-
-
+//police
+var xPos2 = 19;
+var yPos2 = 19;
+var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
+var span2 = document.createElement("span2");
+let content2 = document.createTextNode("👮‍♂️");
+span2.setAttribute('id', 'player2')
+span2.appendChild(content2);
+heroPos2.appendChild(span2);
+//maling
 function Move1(xMove1, yMove1) {
     var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
     var area = document.getElementById(`c-${xPos1+xMove1}-b-${yPos1+yMove1}`);
@@ -123,37 +136,16 @@ function Move1(xMove1, yMove1) {
     var check = document.getElementById('player1').parentNode;
     var check1 = check.children;
     if (check1.length == 2) {
+        Audio("policewin")
         let press = confirm('Maling Menyerahkan diri');
-        if (press == true){
+        if (press == true) {
             location.reload();
-        }else{
+        } else {
             location.reload();
         }
     }
 }
-
-var controlButton = document.body.addEventListener('keyup', (event) => {
-    if (event.code == 'ArrowDown') {
-        Move1(0, 1)
-    } else if (event.code == 'ArrowUp') {
-        Move1(0, -1)
-    } else if (event.code == 'ArrowLeft') {
-        Move1(-1, 0)
-    } else if (event.code == 'ArrowRight') {
-        Move1(1, 0)
-    }
-});
-
-var xPos2 = 19;
-var yPos2 = 19;
-var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
-var span2 = document.createElement("span2");
-let content2 = document.createTextNode("👮‍♂️");
-span2.setAttribute('id', 'player2')
-span2.appendChild(content2);
-heroPos2.appendChild(span2);
-
-
+// police
 function Move2(xMove2, yMove2) {
     var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
     var area = document.getElementById(`c-${xPos2+xMove2}-b-${yPos2+yMove2}`);
@@ -172,34 +164,74 @@ function Move2(xMove2, yMove2) {
     var check = document.getElementById('player2').parentNode;
     var check2 = check.children;
     if (check2.length == 2) {
+        Audio("policewin")
         let press = confirm('Maling tertangkap');
-        if (press == true){
+        if (press == true) {
             location.reload();
-        }else{
+        } else {
             location.reload();
         }
     }
 }
 
+//maling
 var controlButton = document.body.addEventListener('keyup', (event) => {
-    if (event.code == 'KeyS') {
-        Move2(0, 1)
-    } else if (event.code == 'KeyW') {
-        Move2(0, -1)
-    } else if (event.code == 'KeyA') {
-        Move2(-1, 0)
-    } else if (event.code == 'KeyD') {
-        Move2(1, 0)
+    if (event.code == 'ArrowDown') {
+        Audio("myWalkAudio")
+        Move1(0, 1)
+    } else if (event.code == 'ArrowUp') {
+        Audio("myWalkAudio")
+        Move1(0, -1)
+    } else if (event.code == 'ArrowLeft') {
+        Audio("myWalkAudio")
+        Move1(-1, 0)
+    } else if (event.code == 'ArrowRight') {
+        Audio("myWalkAudio")
+        Move1(1, 0)
     }
 });
+// police
+var controlButton = document.body.addEventListener('keyup', (event) => {
+    if (event.code == 'KeyS') {
+        Audio('myAudio')
+        Move2(0, 1)
+    } else if (event.code == 'KeyW') {
+        Audio('myAudio')
+        Move2(0, -1)
+    } else if (event.code == 'KeyA') {
+        Audio('myAudio')
+        Move2(-1, 0)
+    } else if (event.code == 'KeyD') {
+        Audio('myAudio')
+        Move2(1, 0)
+    } else if (event.code == 'PageDown') {
+        Audio('mocking')
+    }
+});
+// audio
+function Audio(effect) {
+    let bodyAudio = document.body;
+    let audioDiv = document.createElement('audio');
+    audioDiv.setAttribute("id", effect);
+    bodyAudio.appendChild(audioDiv)
+
+    let sourceAudio = document.getElementById(effect)
+    let sourceDiv = document.createElement("source")
+    sourceDiv.setAttribute("src", `assets/sound/${effect}.mp3`)
+    sourceDiv.setAttribute("type", "audio/mpeg")
+    sourceAudio.appendChild(sourceDiv)
+    let playAudio = document.getElementById(effect);
+    return playAudio.play();
+}
+
 
 var bodyTimer = document.body
-
 var button = document.createElement('button');
 var buttonText = document.createTextNode('Play!');
 button.appendChild(buttonText);
 button.setAttribute("class", "play");
 button.addEventListener('click', function() {
+    Audio("startgame")
     var divTimer = document.createElement("div");
     divTimer.setAttribute("id", "timer");
     bodyTimer.appendChild(divTimer);
@@ -254,18 +286,3 @@ window.onclick = function(event) {
         modal.style.display = "none";
     }
 }
-
-let bodyAudio = document.body;
-let audioDiv = document.createElement('audio');
-audioDiv.setAttribute("id", "myAudio");
-audioDiv.setAttribute("loop", "loop")
-bodyAudio.appendChild(audioDiv)
-
-let sourceAudio = document.getElementById("myAudio")
-let sourceDiv = document.createElement("source")
-sourceDiv.setAttribute("src", "assets/sound/pacman.mp3")
-sourceDiv.setAttribute("type", "audio/mpeg")
-sourceAudio.appendChild(sourceDiv)
-
-let playAudio = document.getElementById("myAudio");
-playAudio.play();
