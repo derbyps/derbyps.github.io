@@ -1,4 +1,3 @@
-// i = baris, j= colom
 function Timer(min, sec, speedTime) {
     window.onload = function() {
         var minutes = min;
@@ -37,6 +36,7 @@ Timer(10, 60, 250)
 listRandomI = []
 listRandomJ = []
 
+// i = baris, j= colom
 function GenerateBoard(baris, colom) {
     var mainBody = document.getElementById("main");
     for (i = 0; i < baris; i++) {
@@ -45,6 +45,8 @@ function GenerateBoard(baris, colom) {
             mainBodyDiv.setAttribute("id", `c-${j}-b-${i}`);
             if (i === 0 || i === baris - 1 || j === 0 || j === colom - 1) {
                 Element("black")
+            } else if (i === 1 || i === baris - 2 || j === 1 || j === colom - 2) {
+                Element("grey")
             } else if (i % 2 === 0) {
                 if (j % 2 === 0) {
                     Element("black")
@@ -136,7 +138,7 @@ var xPos2 = 19;
 var yPos2 = 19;
 var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
 var span2 = document.createElement("span2");
-let content2 = document.createTextNode("👦");
+let content2 = document.createTextNode("👮‍♂️");
 span2.setAttribute('id', 'player2')
 span2.appendChild(content2);
 heroPos2.appendChild(span2);

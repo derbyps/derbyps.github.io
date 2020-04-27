@@ -3,12 +3,18 @@
     grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto auto;
 }
 
+body {
+    background: url(./background.gif) no-repeat center center;
+    background-size: 100%;
+    text-align: center;
+}
+
 span1 {
-    font-size: 33px;
+    font-size: 30px;
 }
 
 span2 {
-    font-size: 23px;
+    font-size: 30px;
 }
 
 .desc {
@@ -22,11 +28,15 @@ span2 {
 
 #timer {
     /* display: inline grid; */
-    font-size: 20px;
-    margin-left: 650px;
-    margin-top: -390px;
-    color: blue;
+    font-size: 50px;
+    background-color: rgb(26, 151, 135);
+    border-radius: 10px;
+    margin-left: 470px;
+    width: 200px;
+    /* margin-top: -490px; */
+    color: white;
     font-weight: bolder;
+    text-align: center;
 }
 
 body {
