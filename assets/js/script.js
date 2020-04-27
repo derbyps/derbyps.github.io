@@ -240,20 +240,34 @@ window.onclick = function(event) {
     }
 }
 
-// let bodyAudio = document.body;
-// let audioDiv = document.createElement('audio');
-// audioDiv.setAttribute("id", "myAudio");
-// bodyAudio.appendChild(audioDiv)
+//pacman audio
+let pacmanAudio = document.body;
+let pacmanAudioDiv = document.createElement('audio');
+pacmanAudioDiv.setAttribute("id", "myPacmanAudio");
+pacmanAudioDiv.setAttribute("loop", "loop")
+pacmanAudio.appendChild(pacmanAudioDiv)
 
-// let sourceAudio = document.getElementById("myAudio")
-// let sourceDiv = document.createElement("source")
-// sourceDiv.setAttribute("src", "assets/sound/pacman.mp3")
-// sourceDiv.setAttribute("type", "audio/mpeg")
-// sourceAudio.appendChild(sourceDiv)
+let sourcePacmanAudio = document.getElementById("myPacmanAudio")
+let sourcePacmanDiv = document.createElement("source")
+sourcePacmanDiv.setAttribute("src", "assets/sound/pacman.mp3")
+sourcePacmanDiv.setAttribute("type", "audio/mpeg")
+sourcePacmanAudio.appendChild(sourcePacmanDiv)
 
-// let playAudio = document.getElementById("myAudio");
-// playAudio.onplay();
+let playPacman = document.getElementById("myPacmanAudio");
+playPacman.play();
 
-window.onload = function(){
-    this.document.getElementById("background").play();
-}
+//walk audio
+let walkAudio = document.body;
+let walkAudioDiv = document.createElement('audio');
+walkAudioDiv.setAttribute("id", "myWalkAudio");
+walkAudioDiv.setAttribute("loop", "loop")
+walkAudio.appendChild(walkAudioDiv)
+
+let sourcewalkAudio = document.getElementById("myWalkAudio")
+let sourcewalkDiv = document.createElement("source")
+sourcewalkDiv.setAttribute("src", "assets/sound/walk.mp3")
+sourcewalkDiv.setAttribute("type", "audio/mpeg")
+sourcewalkAudio.appendChild(sourcewalkDiv)
+
+let playWalk = document.getElementById("myWalkAudio");
+playWalk.play();
