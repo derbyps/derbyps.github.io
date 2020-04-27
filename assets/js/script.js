@@ -10,7 +10,12 @@ function Timer(min, sec, speedTime) {
                 second = 60;
                 if (minutes == -1) {
                     clearInterval(myInterval);
-                    alert("Maling Menang")
+                    let press = confirm('Maling Menyerahkan diri');
+                    if (press == true){
+                        location.reload();
+                    }else{
+                        location.reload();
+                    }
                 }
             } else if (second == 0 || second == 30) {
                 for (num = 0; num < listRandomI.length; num++) {
@@ -118,7 +123,12 @@ function Move1(xMove1, yMove1) {
     var check = document.getElementById('player1').parentNode;
     var check1 = check.children;
     if (check1.length == 2) {
-        alert('Maling Menyerahkan diri')
+        let press = confirm('Maling Menyerahkan diri');
+        if (press == true){
+            location.reload();
+        }else{
+            location.reload();
+        }
     }
 }
 
@@ -162,7 +172,12 @@ function Move2(xMove2, yMove2) {
     var check = document.getElementById('player2').parentNode;
     var check2 = check.children;
     if (check2.length == 2) {
-        alert('Maling tertangkap')
+        let press = confirm('Maling tertangkap');
+        if (press == true){
+            location.reload();
+        }else{
+            location.reload();
+        }
     }
 }
 
@@ -240,20 +255,17 @@ window.onclick = function(event) {
     }
 }
 
-// let bodyAudio = document.body;
-// let audioDiv = document.createElement('audio');
-// audioDiv.setAttribute("id", "myAudio");
-// bodyAudio.appendChild(audioDiv)
+let bodyAudio = document.body;
+let audioDiv = document.createElement('audio');
+audioDiv.setAttribute("id", "myAudio");
+audioDiv.setAttribute("loop", "loop")
+bodyAudio.appendChild(audioDiv)
 
-// let sourceAudio = document.getElementById("myAudio")
-// let sourceDiv = document.createElement("source")
-// sourceDiv.setAttribute("src", "assets/sound/pacman.mp3")
-// sourceDiv.setAttribute("type", "audio/mpeg")
-// sourceAudio.appendChild(sourceDiv)
+let sourceAudio = document.getElementById("myAudio")
+let sourceDiv = document.createElement("source")
+sourceDiv.setAttribute("src", "assets/sound/pacman.mp3")
+sourceDiv.setAttribute("type", "audio/mpeg")
+sourceAudio.appendChild(sourceDiv)
 
-// let playAudio = document.getElementById("myAudio");
-// playAudio.onplay();
-
-window.onload = function(){
-    this.document.getElementById("background").play();
-}
+let playAudio = document.getElementById("myAudio");
+playAudio.play();
