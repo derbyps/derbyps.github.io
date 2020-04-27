@@ -13,7 +13,7 @@ function Timer(min, sec, speedTime) {
                     clearInterval(myInterval);
                     alert("Maling Menang")
                 }
-            } else if (second == 50) {
+            } else if (second == 0 || second == 30) {
                 for (num = 0; num < listRandomI.length; num++) {
                     var j = listRandomJ[num]
                     var i = listRandomI[num]
@@ -31,7 +31,7 @@ function Timer(min, sec, speedTime) {
         }, speedTime);
     }
 }
-Timer(10, 60, 200)
+Timer(10, 60, 250)
 
 
 listRandomI = []
@@ -69,10 +69,8 @@ function GenerateBoard(baris, colom) {
             mainBody.appendChild(mainBodyDiv);
         }
     }
-
 }
 GenerateBoard(21, 21)
-
 
 function RandomBoard(warna) {
     var random_element = warna[Math.floor(Math.random() * warna.length)]
@@ -178,7 +176,6 @@ var controlButton = document.body.addEventListener('keyup', (event) => {
     }
 });
 
-
 var bodyTimer = document.body
 
 var button = document.createElement('button');
@@ -196,9 +193,6 @@ let rulesButton = document.createElement('button');
 let rulesButtonText = document.createTextNode('Rules');
 rulesButton.appendChild(rulesButtonText);
 rulesButton.setAttribute("id", "myBtn");
-// rulesButton.addEventListener('click', function(){
-// alert("Cara bermain :<br><br>permainan ini dimainkan oleh dua orang. Dimana pemain pertama menjadi zombie dan pemain kedua menjadi pemburu zombie. Tugas zombie adalah kabur dari pemburu zombie dan tugas pemburu zombie adalah menangkap zombie.<br><br>Kontrol :<br>W : bergerak keatas&emsp;&emsp;&emsp;arrow up : bergerak keatas<br>A : bergerak kekiris&emsp;&emsp;&emsp;arrow left : bergerak kekiri<br>S : bergerak kebawah&emsp;&emsp;arrow down : bergerak kebawah<br>D : bergerak kekanan&emsp;&emsp;arrow right : bergerak kekanan<br><br>Kondisi kemenangan :<br>Zombie : tidak tertangkap pemburu sampai timer habis<br>Pemburu Zombie : menangkap zombie sebelum timer habis")
-// })
 bodyTimer.appendChild(rulesButton)
 let rulesDiv = document.createElement('div');
 rulesDiv.setAttribute("id", "myModal");
