@@ -1,7 +1,5 @@
-function Timer(min, sec, speedTime, stop) {
+function Timer(minutes, second, speedTime) {
     window.onload = function() {
-        var minutes = min;
-        var second = sec;
         var myInterval = setInterval(function() {
             document.getElementById("timer").innerHTML = minutes + " : " + second;
             second--;
