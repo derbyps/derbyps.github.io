@@ -37,7 +37,7 @@ function Timer(min, sec, speedTime, stop) {
         }, speedTime);
     }
 }
-Timer(5, 0, 500)
+Timer(1, 0, 500)
 
 
 listRandomI = []
@@ -206,6 +206,18 @@ var controlButton = document.body.addEventListener('keyup', (event) => {
         Move2(1, 0)
     } else if (event.code == 'PageDown') {
         Audio('mocking')
+    } else if (event.code == 'ArrowDown') {
+        Audio("myWalkAudio")
+        Move1(0, 1)
+    } else if (event.code == 'ArrowUp') {
+        Audio("myWalkAudio")
+        Move1(0, -1)
+    } else if (event.code == 'ArrowLeft') {
+        Audio("myWalkAudio")
+        Move1(-1, 0)
+    } else if (event.code == 'ArrowRight') {
+        Audio("myWalkAudio")
+        Move1(1, 0)
     }
 });
 // audio
