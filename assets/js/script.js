@@ -37,7 +37,7 @@ function Timer(min, sec, speedTime, stop) {
         }, speedTime);
     }
 }
-Timer(1, 0, 500)
+Timer(5, 0, 500)
 
 
 listRandomI = []
