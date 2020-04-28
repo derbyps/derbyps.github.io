@@ -174,23 +174,8 @@ function Move2(xMove2, yMove2) {
     }
 }
 
-//maling
-var controlButton = document.body.addEventListener('keyup', (event) => {
-    if (event.code == 'ArrowDown') {
-        Audio("myWalkAudio")
-        Move1(0, 1)
-    } else if (event.code == 'ArrowUp') {
-        Audio("myWalkAudio")
-        Move1(0, -1)
-    } else if (event.code == 'ArrowLeft') {
-        Audio("myWalkAudio")
-        Move1(-1, 0)
-    } else if (event.code == 'ArrowRight') {
-        Audio("myWalkAudio")
-        Move1(1, 0)
-    }
-});
-// police
+
+// control button
 var controlButton = document.body.addEventListener('keyup', (event) => {
     if (event.code == 'KeyS') {
         Audio('myAudio')
