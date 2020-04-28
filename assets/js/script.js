@@ -35,7 +35,7 @@ function Timer(minutes, second, speedTime) {
         }, speedTime);
     }
 }
-Timer(5, 0, 500)
+Timer(3, 0, 500)
 
 
 listRandomI = []
@@ -117,7 +117,7 @@ span2.appendChild(content2);
 heroPos2.appendChild(span2);
 //maling
 function Move1(xMove1, yMove1) {
-    var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
+    // var heroPos1 = document.getElementById(`c-${xPos1}-b-${yPos1}`);
     var area = document.getElementById(`c-${xPos1+xMove1}-b-${yPos1+yMove1}`);
     let isWall = area.className
     if (isWall == 'wall') {
@@ -145,7 +145,7 @@ function Move1(xMove1, yMove1) {
 }
 // police
 function Move2(xMove2, yMove2) {
-    var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
+    // var heroPos2 = document.getElementById(`c-${xPos2}-b-${yPos2}`);
     var area = document.getElementById(`c-${xPos2+xMove2}-b-${yPos2+yMove2}`);
     let isWall = area.className
     if (isWall == 'wall') {
