@@ -9,4 +9,4 @@ Developers:
 - [Yopi Ragil](https://www.linkedin.com/in/yopi-ragil-permana-putra-61754312b/)
 
 Link:
-[Game Tangkap Aku Pak!](derbyps.github.io)
+[Game Tangkap Aku Pak!](https://derbyps.github.io/)
